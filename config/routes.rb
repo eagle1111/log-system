@@ -20,6 +20,7 @@ Rails.application.routes.draw do
       resources :tickets, :controller => "event_tickets"
       resources :departments, :controller => "event_departments"
       resources :jobs, :controller => "event_jobs"
+      resources :registrations, :controller => "event_registrations"
     end
     resources :users
     resources :groups

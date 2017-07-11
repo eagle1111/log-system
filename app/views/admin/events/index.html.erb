@@ -21,6 +21,7 @@
             <%= link_to event.name, admin_event_path(event) %>
           </td>
           <td>
+            <%= link_to "日志管理", admin_event_registrations_path(event), :class => "btn btn-default" %>
             <%= link_to "业务", admin_event_tickets_path(event), :class => "btn btn-default" %>
             <%= link_to "用户单位", admin_event_departments_path(event), :class => "btn btn-default" %>
             <%= link_to "班组", admin_event_jobs_path(event), :class => "btn btn-default" %>
