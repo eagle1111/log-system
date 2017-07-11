@@ -1,0 +1,20 @@
+<h1><%= @event.name %> / 用户单位</h1>
+
+<p class="text-right">
+<%= link_to "新增用户单位", new_admin_event_job_path(@event), :class => "btn btn-primary" %>
+</p>
+
+<table class="table">
+<tr>
+  <th>班组名称</th>
+  <th>操作</th>
+</tr>
+<% @jobs.each do |job| %>
+  <tr>
+    <td><%= job.name %></td>
+    <td>
+      <%= link_to "Edit", edit_admin_event_job_path(@event, job), :class => "btn btn-default" %>
+      <%= link_to "Delete", admin_event_job_path(@event, job), :method => "delete", :data => { :confirm => "Are you sure?" }, :class => "btn btn-danger" %>
+  </tr>
+<% end %>
+</table>

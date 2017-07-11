@@ -1,0 +1,14 @@
+<% if @job.errors.any? %>
+  <div id="error_explanation">
+    <ul>
+    <% @job.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class="form-group">
+  <%= f.label :"班组名称" %>
+  <%= f.text_field :name, :class => "form-control" %>
+</div>

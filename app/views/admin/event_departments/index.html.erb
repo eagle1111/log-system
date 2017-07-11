@@ -1,0 +1,20 @@
+<h1><%= @event.name %> / 用户单位</h1>
+
+<p class="text-right">
+<%= link_to "新增用户单位", new_admin_event_department_path(@event), :class => "btn btn-primary" %>
+</p>
+
+<table class="table">
+<tr>
+  <th>用户单位名称</th>
+  <th>操作</th>
+</tr>
+<% @departments.each do |department| %>
+  <tr>
+    <td><%= department.name %></td>
+    <td>
+      <%= link_to "Edit", edit_admin_event_department_path(@event, department), :class => "btn btn-default" %>
+      <%= link_to "Delete", admin_event_department_path(@event, department), :method => "delete", :data => { :confirm => "Are you sure?" }, :class => "btn btn-danger" %>
+  </tr>
+<% end %>
+</table>

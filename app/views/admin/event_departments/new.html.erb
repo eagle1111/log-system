@@ -1,0 +1,11 @@
+<h1>新增用户单位</h1>
+
+<%= form_for [:admin, @event, @department] do |f| %>
+
+  <%= render :partial => "form", :locals => { :f => f } %>
+
+  <div class="form-group">
+    <%= f.submit "Create", :class => "btn btn-primary" %>
+    <%= link_to "Cancel", admin_event_departments_path(@event) %>
+  </div>
+<% end %>
