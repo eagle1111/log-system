@@ -4,6 +4,11 @@ class Event < ApplicationRecord
 
   before_validation :generate_friendly_id, :on => :create
 
+  has_many :tickets, :dependent => :destroy
+  has_many :departments, :dependent => :destroy
+  has_many :jobs, :dependent => :destroy
+
+  
   def to_param
     self.friendly_id
   end
