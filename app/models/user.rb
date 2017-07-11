@@ -6,4 +6,7 @@ class User < ApplicationRecord
   def display_name
     self.email.split("@").first
   end
+  has_many :memberships
+  has_many :groups, :through => :memberships
+  
 end
