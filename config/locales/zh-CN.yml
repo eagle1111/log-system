@@ -2,3 +2,7 @@
   event_list: 部门列表
   admin:
     event_list: 部门列表管理
+  registration:
+    status:
+      pending: 未登记成功
+      confirmed: 登记成功

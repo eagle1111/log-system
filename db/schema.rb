@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170711053414) do
+ActiveRecord::Schema.define(version: 20170711061705) do
 
   create_table "departments", force: :cascade do |t|
     t.integer  "event_id"
@@ -53,6 +53,28 @@ ActiveRecord::Schema.define(version: 20170711053414) do
     t.datetime "updated_at", null: false
     t.index ["group_id"], name: "index_memberships_on_group_id"
     t.index ["user_id"], name: "index_memberships_on_user_id"
+  end
+
+  create_table "registrations", force: :cascade do |t|
+    t.string   "status",        default: "pending"
+    t.string   "uuid"
+    t.integer  "event_id"
+    t.integer  "ticket_id"
+    t.integer  "department_id"
+    t.integer  "job_id"
+    t.integer  "user_id"
+    t.string   "name"
+    t.string   "email"
+    t.string   "cellphone"
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+    t.text     "description"
+    t.index ["department_id"], name: "index_registrations_on_department_id"
+    t.index ["event_id"], name: "index_registrations_on_event_id"
+    t.index ["job_id"], name: "index_registrations_on_job_id"
+    t.index ["ticket_id"], name: "index_registrations_on_ticket_id"
+    t.index ["user_id"], name: "index_registrations_on_user_id"
+    t.index ["uuid"], name: "index_registrations_on_uuid", unique: true
   end
 
   create_table "tickets", force: :cascade do |t|

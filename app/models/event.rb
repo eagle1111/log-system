@@ -7,8 +7,9 @@ class Event < ApplicationRecord
   has_many :tickets, :dependent => :destroy
   has_many :departments, :dependent => :destroy
   has_many :jobs, :dependent => :destroy
+  has_many :registrations, :dependent => :destroy
 
-  
+
   def to_param
     self.friendly_id
   end
