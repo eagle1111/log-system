@@ -1,6 +1,35 @@
 <h1><%= @event.name %> / 日志管理</h1>
 
+<%= search_form_for @q, :url => admin_event_registrations_path(@event) do |f| %>
+  <p><%= f.search_field :name_cont, :placeholder => "姓名", :class => "form-control" %></p>
 
+
+ <p>
+   <% Registration::STATUS.each do |s| %>
+      <label><%= check_box_tag "statuses[]", s, Array(params[:statuses]).include?(s) %> <%= t(s, :scope =>  "registration.status") %> (<%= @event.registrations.by_status(s).size %>)</label>
+   <% end %>
+  </p>
+
+  <p>
+    业务：<% @event.tickets.each do |t| %>
+      <label><%= check_box_tag "ticket_ids[]", t.id, Array(params[:ticket_ids]).include?(t.id.to_s) %> <%= t.name %> (<%=  @event.registrations.where( :ticket_id => t.id ).size %>)</label>
+    <% end %>
+  </p>
+
+  <p>
+    班组：<% @event.jobs.each do |j| %>
+      <label><%= check_box_tag "job_ids[]", j.id, Array(params[:job_ids]).include?(j.id.to_s) %> <%= j.name %> (<%=  @event.registrations.where( :job_id => j.id ).size %>)</label>
+    <% end %>
+  </p>
+
+  <p>
+    日期：<%= date_field_tag :start_on, params[:start_on] %>～<%= date_field_tag :end_on, params[:end_on] %>
+  </p>
+
+  <p class="text-right">
+    <%= submit_tag "送出筛选", :class => "btn btn-primary" %>
+  </p>
+<% end %>
 
 <table class="table">
 <tr>
